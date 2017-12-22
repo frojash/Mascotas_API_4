@@ -53,7 +53,10 @@ public class PreferidosActivity extends AppCompatActivity {
 
 
     private void InicializarAdaptador() {
-        MascotaAdaptador adaptador = new MascotaAdaptador(mascotas, this);
+        ArrayList<Mascota> _nuevaMascotas = mascotas;
+        _nuevaMascotas.subList(5, _nuevaMascotas.size()).clear();
+
+        MascotaAdaptador adaptador = new MascotaAdaptador(_nuevaMascotas, this);
         rvMascotasPreferidas.setAdapter(adaptador);
     }
 
