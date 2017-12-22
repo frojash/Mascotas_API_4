@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="corner_radius_card_view" >4dp</dimen>
+    <dimen name="activity_vertical_margin" >16dp</dimen>
+    <dimen name="padding_layout" >7dp</dimen>
+    <dimen name="icono_hueso" >38dp</dimen>
+    <dimen name="letra_nombre" >22dp</dimen>
+    <dimen name="letra_titulo" >24dp</dimen>
+    <dimen name="paddind_left" >16dp</dimen>
+    <dimen name="letra_likes">24dp</dimen>
+    <dimen name="paddind_left_yellow">100dp</dimen>
+    <dimen name="elevacion_toolbar">4dp</dimen>
+</resources>
