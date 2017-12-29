@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view='http://schemas.android.com/apk/res-auto'
+    android:id="@+id/cvDetalleMascota"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    card_view:cardCornerRadius="@dimen/corner_radius_card_view">
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_layout">
+
+        <ImageView
+            android:id="@+id/imgfotoDetalle"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:src="@drawable/dog3" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvLikesDetalle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/icono_hueso"
+                android:src="@drawable/icons8_dog_bone_yellow" />
+
+            <ImageView
+                android:id="@+id/imgLikesDetalle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/icono_hueso"
+                android:src="@drawable/icons8_dog_bone_yellow" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
