@@ -19,6 +19,10 @@ public class Mascota implements  java.io.Serializable{
         this.gusta = pGusta;
     }
 
+    public Mascota (int pfoto, int plikes){
+        this.foto = pfoto;
+        this.likes = plikes;
+    }
 
     public String getNombre() {
         return nombre;

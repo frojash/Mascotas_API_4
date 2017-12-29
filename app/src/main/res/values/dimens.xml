@@ -6,8 +6,13 @@
     <dimen name="icono_hueso" >38dp</dimen>
     <dimen name="letra_nombre" >22dp</dimen>
     <dimen name="letra_titulo" >24dp</dimen>
+    <dimen name="left" >16dp</dimen>
     <dimen name="paddind_left" >16dp</dimen>
     <dimen name="letra_likes">24dp</dimen>
     <dimen name="paddind_left_yellow">100dp</dimen>
     <dimen name="elevacion_toolbar">4dp</dimen>
+    <dimen name="float_cam">20dp</dimen>
+    <dimen name="right">16dp</dimen>
+    <dimen name="espacio_cardview">6dp</dimen>
+
 </resources>

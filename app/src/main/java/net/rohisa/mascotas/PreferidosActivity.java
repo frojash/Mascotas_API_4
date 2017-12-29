@@ -6,12 +6,12 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
-import android.widget.ImageButton;
 
+import net.rohisa.mascotas.R;
+import net.rohisa.mascotas.MainActivity;
 import net.rohisa.mascotas.adapter.MascotaAdaptador;
 import net.rohisa.mascotas.pojo.Mascota;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -24,8 +24,6 @@ public class PreferidosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferidos);
-        Serializable parametros = getIntent().getSerializableExtra("source");
-        mascotas = (ArrayList<Mascota>) parametros;
 
         android.support.v7.widget.Toolbar miActionBar = (android.support.v7.widget.Toolbar) findViewById(R.id.miActionBar);
         setSupportActionBar(miActionBar);
@@ -39,6 +37,21 @@ public class PreferidosActivity extends AppCompatActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         rvMascotasPreferidas.setLayoutManager(llm);
 
+        InicializarDatos();
+        InicializarAdaptador();
+    }
+
+    private void InicializarDatos() {
+        mascotas = new ArrayList<Mascota>();
+
+        mascotas.add(new Mascota(R.drawable.dog1, 5, "Sam", false));
+        mascotas.add(new Mascota(R.drawable.dog2, 2, "Jack", false));
+        mascotas.add(new Mascota(R.drawable.dog3, 3, "Cheise", false));
+        mascotas.add(new Mascota(R.drawable.dog4, 6, "Pipo", false));
+        mascotas.add(new Mascota(R.drawable.dog5, 7, "Marshall", false));
+        mascotas.add(new Mascota(R.drawable.dog6, 1, "Duke", false));
+        mascotas.add(new Mascota(R.drawable.dog7, 8, "Spike", false));
+
         //Ordena la lista
         Collections.sort(mascotas, new Comparator<Mascota>() {
             public int compare(Mascota o1, Mascota o2) {
@@ -48,7 +61,6 @@ public class PreferidosActivity extends AppCompatActivity {
             }
         });
 
-        InicializarAdaptador();
     }
 
 

@@ -2,6 +2,9 @@
 <resources>
     <color name="colorPrimary">#00BCD4</color>
     <color name="colorPrimaryDark">#0097A7</color>
-    <color name="colorAccent">#795548</color>
+    <color name="Cafe">#795548</color>
+    <color name="colorAccent">#FF5722</color>
     <color name="textColor">#FF5722</color>
+    <color name="black">#000000</color>
+    <color name="Gris">#b9b6b6</color>
 </resources>

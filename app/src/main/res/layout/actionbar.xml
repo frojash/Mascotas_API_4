@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
+        android:textColor="@color/Cafe"
         android:textSize="@dimen/letra_titulo"
         android:layout_gravity="center"/>
 </android.support.v7.widget.Toolbar>
