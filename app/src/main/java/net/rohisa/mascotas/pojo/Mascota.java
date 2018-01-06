@@ -1,18 +1,15 @@
 package net.rohisa.mascotas.pojo;
 
 
-import android.support.annotation.NonNull;
-
-import java.util.Comparator;
-
 public class Mascota implements  java.io.Serializable{
 
+    private int id;
     private String nombre;
     private int likes;
     private int foto;
     private boolean gusta;
 
-    public Mascota (int pfoto, int plikes, String pnombre, boolean pGusta){
+    public Mascota( int pfoto, int plikes, String pnombre, boolean pGusta){
         this.nombre = pnombre;
         this.foto = pfoto;
         this.likes = plikes;
@@ -22,6 +19,10 @@ public class Mascota implements  java.io.Serializable{
     public Mascota (int pfoto, int plikes){
         this.foto = pfoto;
         this.likes = plikes;
+    }
+
+    public Mascota() {
+
     }
 
     public String getNombre() {
@@ -56,5 +57,11 @@ public class Mascota implements  java.io.Serializable{
         this.gusta = gusta;
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 }

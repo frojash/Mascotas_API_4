@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import net.rohisa.mascotas.R;
+import net.rohisa.mascotas.db.ConstructorMascotas;
 import net.rohisa.mascotas.pojo.Mascota;
 
 import java.lang.reflect.Array;
@@ -51,24 +52,25 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
             public void onClick(View v) {
                 int _cantidad = 0;
 
-                if (mascota.isGusta()){
-                    _cantidad = mascota.getLikes() - 1;
-                    mascota.setGusta(false);
-                    Toast.makeText(activity, "Ya no te gusta " + mascota.getNombre(), Toast.LENGTH_SHORT).show();
-                    mascotaViewHolder.btnLike.setBackgroundResource(R.drawable.icons8_dog_bone_50);
-
-
-                }
-                else{
-                    _cantidad = mascota.getLikes() + 1;
-                    mascota.setLikes(_cantidad);
-                    mascota.setGusta(true);
-                    Toast.makeText(activity, "Te gusta " + mascota.getNombre(), Toast.LENGTH_SHORT).show();
-                    mascotaViewHolder.btnLike.setBackgroundResource(R.drawable.icons8_xbox_x_40);
-
-                }
+//                if (mascota.isGusta()){
+//                    _cantidad = mascota.getLikes() - 1;
+//                    mascota.setGusta(false);
+//                    Toast.makeText(activity, "Ya no te gusta " + mascota.getNombre(), Toast.LENGTH_SHORT).show();
+//                    mascotaViewHolder.btnLike.setBackgroundResource(R.drawable.icons8_dog_bone_50);
+//
+//
+//                }
+//                else{
+                _cantidad = mascota.getLikes() + 1;
                 mascota.setLikes(_cantidad);
-                mascotaViewHolder.tvLikes.setText(String.valueOf(_cantidad));
+                mascota.setGusta(true);
+                Toast.makeText(activity, "Te gusta " + mascota.getNombre(), Toast.LENGTH_SHORT).show();
+//                    mascotaViewHolder.btnLike.setBackgroundResource(R.drawable.icons8_xbox_x_40);
+                ConstructorMascotas constructorMascotas = new ConstructorMascotas(activity);
+                constructorMascotas.darLikeMascota(mascota);
+                mascotaViewHolder.tvLikes.setText(String.valueOf( constructorMascotas.obtenerLikesMascota(mascota)));
+
+//                }
 
             }
         });

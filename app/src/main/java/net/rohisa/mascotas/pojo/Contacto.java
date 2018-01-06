@@ -16,7 +16,6 @@ public class Contacto {
         this.email = email;
     }
 
-
     public String getMensaje() {
         return mensaje;
     }
