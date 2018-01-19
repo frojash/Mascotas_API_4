@@ -14,19 +14,30 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.mikhaellopez.circularimageview.CircularImageView;
+
 import net.rohisa.mascotas.R;
 import net.rohisa.mascotas.adapter.DetalleAdaptador;
+import net.rohisa.mascotas.adapter.MascotaAdaptador;
 import net.rohisa.mascotas.pojo.Mascota;
+import net.rohisa.mascotas.presentador.DetalleMascotaFragmentPresenter;
+import net.rohisa.mascotas.presentador.IDetalleMascotaFragmentPresenter;
+import net.rohisa.mascotas.presentador.IRecyclerViewFragmentPresenter;
+import net.rohisa.mascotas.presentador.RecyclerViewFragmentPresenter;
+
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DetalleMascotaFragment extends Fragment {
+public class DetalleMascotaFragment extends Fragment implements IDetalleMascotaFragment {
     RecyclerView rvFotosMascota;
     ArrayList<Mascota> mascotas = new ArrayList<Mascota>();
+    private IDetalleMascotaFragmentPresenter presenter;
 
 
     @Nullable
@@ -43,45 +54,45 @@ public class DetalleMascotaFragment extends Fragment {
         circularImageView.setShadowColor(Color.RED);
 
         rvFotosMascota = (RecyclerView) v.findViewById(R.id.rvFotosMascota);
-        GridLayoutManager glm = new GridLayoutManager(getActivity(), 3);
-        rvFotosMascota.setLayoutManager(glm);
+        generarGridLayout();
         ItemOffsetDecoration itemDecoration = new ItemOffsetDecoration(v.getContext(), R.dimen.espacio_cardview);
         rvFotosMascota.addItemDecoration(itemDecoration);
 
-
-        InicializarDatos();
-        InicializarAdaptador();
-
+        presenter = new DetalleMascotaFragmentPresenter(this, getContext());
 
         return v;
 
     }
 
-    private void InicializarAdaptador() {
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        return true;
+//    }
+
+    @Override
+    public void generarGridLayout() {
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
+        rvFotosMascota.setLayoutManager(gridLayoutManager);
+
+    }
+
+    @Override
+    public DetalleAdaptador crearAdaptador(ArrayList<Mascota> mascotas) {
+//        //Ordena la lista
+//        Collections.sort(mascotas, new Comparator<Mascota>() {
+//            public int compare(Mascota o1, Mascota o2) {
+//                return o1.getNombre().compareTo(o2.getNombre());
+//            }
+//        });
+
         DetalleAdaptador adaptador = new DetalleAdaptador(mascotas, getActivity());
+        return adaptador;
+    }
+
+    @Override
+    public void inicializarAdaptadorRV(DetalleAdaptador adaptador) {
         rvFotosMascota.setAdapter(adaptador);
+
     }
-
-    private void InicializarDatos() {
-        mascotas = new ArrayList<Mascota>();
-
-        mascotas.add(new Mascota(R.drawable.dog3, 10));
-        mascotas.add(new Mascota(R.drawable.dog3, 2));
-        mascotas.add(new Mascota(R.drawable.dog3, 8));
-        mascotas.add(new Mascota(R.drawable.dog3, 6));
-        mascotas.add(new Mascota(R.drawable.dog3, 23));
-        mascotas.add(new Mascota(R.drawable.dog3, 1));
-        mascotas.add(new Mascota(R.drawable.dog3, 7));
-        mascotas.add(new Mascota(R.drawable.dog3, 1));
-        mascotas.add(new Mascota(R.drawable.dog3, 4));
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        return true;
-    }
-
-
 }
 
 

@@ -110,6 +110,10 @@ public class MainActivity extends AppCompatActivity {
 //                intent.putExtra("source", mascotas);
                 startActivity(intent);
                 break;
+            case R.id.mCuenta:
+                intent = new Intent(this, CuentaActivity.class);
+                startActivity(intent);
+                break;
 
         }
 

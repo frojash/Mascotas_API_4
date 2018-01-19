@@ -3,7 +3,7 @@
     package="net.rohisa.mascotas">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -38,6 +38,15 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
+            android:name=".CuentaActivity"
+            android:parentActivityName=".MainActivity">
+
+            <!-- Soporte para versiones anteriores a 4.0 -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
             android:name=".AcercaDeActivity"
             android:parentActivityName=".MainActivity">
 
@@ -46,6 +55,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-≈    </application>
+    </application>
 
 </manifest>

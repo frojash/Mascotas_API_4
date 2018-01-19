@@ -2,13 +2,18 @@ package net.rohisa.mascotas.adapter;
 
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import net.rohisa.mascotas.R;
 import net.rohisa.mascotas.pojo.Mascota;
@@ -40,7 +45,11 @@ public class DetalleAdaptador extends RecyclerView.Adapter<DetalleAdaptador.Deta
     public void onBindViewHolder(DetalleViewHolder detalleViewHolder, int position) {
         final Mascota mascota = mascotas.get(position);
 
-        detalleViewHolder.imgFotoDetalle.setImageResource(mascota.getFoto());
+        Picasso.with(activity)
+                .load(mascota.getUrlFoto())
+                .placeholder(R.drawable.dog1)
+                .into(detalleViewHolder.imgFotoDetalle);
+//        detalleViewHolder.imgFotoDetalle.setImageResource(mascota.getFoto());
         detalleViewHolder.tvlikesDetalle.setText(String.valueOf(mascota.getLikes()));
     }
 

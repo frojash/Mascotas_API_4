@@ -4,6 +4,8 @@ package net.rohisa.mascotas.pojo;
 public class Mascota implements  java.io.Serializable{
 
     private int id;
+    private String codigo;
+    private String urlFoto;
     private String nombre;
     private int likes;
     private int foto;
@@ -63,5 +65,21 @@ public class Mascota implements  java.io.Serializable{
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getUrlFoto() {
+        return urlFoto;
+    }
+
+    public void setUrlFoto(String urlFoto) {
+        this.urlFoto = urlFoto;
     }
 }

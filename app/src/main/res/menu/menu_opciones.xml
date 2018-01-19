@@ -10,6 +10,10 @@
         android:orderInCategory="101"
         android:title="@string/menu_acerca"></item>
     <item
+        android:id="@+id/mCuenta"
+        android:orderInCategory="102"
+        android:title="@string/configurar_cuenta"></item>
+    <item
         android:id="@+id/mPreferidos"
         android:icon="@drawable/ic_star_five"
         android:orderInCategory="102"

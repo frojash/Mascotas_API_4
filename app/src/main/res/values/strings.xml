@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Mascotas</string>
     <string name="dog1">Sam</string>
-    <string name="dog3">Cheise</string>
+    <string name="dog3">nando4395</string>
     <string name="menu_contacto">Contacto</string>
     <string name="menu_acerca">Acerca de</string>
     <string name="contactenos">Contactenos</string>
@@ -16,4 +16,8 @@
     <string name="cero_likes">0 Likes</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="configurar_cuenta">Configurar Cuenta</string>
+    <string name="Mascotapp">MascotAPP</string>
+    <string name="cuenta">Escribe tu usuario</string>
+    <string name="guardar_cuenta">Crear Cuenta</string>
 </resources>
