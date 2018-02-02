@@ -1,18 +1,30 @@
 package net.rohisa.mascotas;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.telecom.Call;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+
 import net.rohisa.mascotas.adapter.PageAdapter;
 import net.rohisa.mascotas.fragments.DetalleMascotaFragment;
+import net.rohisa.mascotas.restApi.EndpointsApi;
+import net.rohisa.mascotas.restApi.adapter.RestApiAdapter;
+import net.rohisa.mascotas.restApi.model.UsuarioResponse;
 
 import java.util.ArrayList;
+
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -114,10 +126,41 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(this, CuentaActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.mNotificaciones:
+               RecibirNotificaciones();
+                break;
 
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void RecibirNotificaciones() {
+        String token = FirebaseInstanceId.getInstance().getToken();
+        SharedPreferences sharedPreferences = getSharedPreferences("MisCuentas", Context.MODE_PRIVATE);
+        String usuario = sharedPreferences.getString("cuenta", "no existe esa variable").toString();
+
+        enviarTokenRegistro(token, usuario);
+    }
+
+    private void enviarTokenRegistro(String token, String usuario){
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        EndpointsApi endpointsApi = restApiAdapter.establecerConexionesRestApiIdToken();
+        retrofit2.Call<UsuarioResponse> usuarioResponseCall = endpointsApi.registrarTokenID(token, usuario);
+        usuarioResponseCall.enqueue(new Callback<UsuarioResponse>() {
+            @Override
+            public void onResponse(retrofit2.Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
+                UsuarioResponse usuarioResponse = response.body();
+                Log.d("ID_FIREBASE", usuarioResponse.getId());
+                Log.d("TOKEN_FIREBASE", usuarioResponse.getToken());
+                Log.d("CUENTA_FIREBASE", usuarioResponse.getUsuario());
+            }
+
+            @Override
+            public void onFailure(retrofit2.Call<UsuarioResponse> call, Throwable t) {
+
+            }
+        });
     }
 
     private void setUpViewPager() {

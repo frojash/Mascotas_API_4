@@ -14,9 +14,13 @@
         android:orderInCategory="102"
         android:title="@string/configurar_cuenta"></item>
     <item
+        android:id="@+id/mNotificaciones"
+        android:orderInCategory="103"
+        android:title="@string/recibir_notificaciones"></item>
+    <item
         android:id="@+id/mPreferidos"
         android:icon="@drawable/ic_star_five"
-        android:orderInCategory="102"
+        android:orderInCategory="104"
         android:title="Refresh"
         app:showAsAction="always"></item>
 </menu>
