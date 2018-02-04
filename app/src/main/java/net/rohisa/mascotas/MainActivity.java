@@ -17,6 +17,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 
 import net.rohisa.mascotas.adapter.PageAdapter;
 import net.rohisa.mascotas.fragments.DetalleMascotaFragment;
+import net.rohisa.mascotas.restApi.ConstantesRestApi;
 import net.rohisa.mascotas.restApi.EndpointsApi;
 import net.rohisa.mascotas.restApi.adapter.RestApiAdapter;
 import net.rohisa.mascotas.restApi.model.UsuarioResponse;
@@ -37,7 +38,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle extras = getIntent().getExtras();
+
         setContentView(R.layout.activity_main);
+        SharedPreferences sharedPreferences = getSharedPreferences("MisCuentas", Context.MODE_PRIVATE);
+        ConstantesRestApi.USUARIO = sharedPreferences.getString("cuenta", "no existe esa variable").toString();
+        ConstantesRestApi.USUARIO_ID = sharedPreferences.getString("cuenta_id", "no existe esa variable").toString();
 
 
 //        Serializable parametros = getIntent().getSerializableExtra("source");
@@ -55,6 +61,16 @@ public class MainActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewPager);
 
         setUpViewPager();
+
+
+        if(extras != null) {
+            Integer tab = extras.getInt("Tab");
+            if (tab == 1){
+                viewPager.setCurrentItem(1);
+            }
+
+        }
+
 //        android.support.v7.widget.Toolbar miActonBar = (android.support.v7.widget.Toolbar) findViewById(R.id.miActionBar);
 //        setSupportActionBar(miActonBar);
 //        getSupportActionBar().hide();
@@ -127,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.mNotificaciones:
-               RecibirNotificaciones();
+                RecibirNotificaciones();
                 break;
 
         }
@@ -137,13 +153,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void RecibirNotificaciones() {
         String token = FirebaseInstanceId.getInstance().getToken();
-        SharedPreferences sharedPreferences = getSharedPreferences("MisCuentas", Context.MODE_PRIVATE);
-        String usuario = sharedPreferences.getString("cuenta", "no existe esa variable").toString();
-
-        enviarTokenRegistro(token, usuario);
+        enviarTokenRegistro(token, ConstantesRestApi.USUARIO);
     }
 
-    private void enviarTokenRegistro(String token, String usuario){
+    private void enviarTokenRegistro(String token, String usuario) {
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         EndpointsApi endpointsApi = restApiAdapter.establecerConexionesRestApiIdToken();
         retrofit2.Call<UsuarioResponse> usuarioResponseCall = endpointsApi.registrarTokenID(token, usuario);

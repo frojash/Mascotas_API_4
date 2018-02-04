@@ -5,17 +5,29 @@ public class Mascota implements  java.io.Serializable{
 
     private int id;
     private String codigo;
+    private String fotoId;
     private String urlFoto;
     private String nombre;
     private int likes;
     private int foto;
     private boolean gusta;
+    private String usuario;
+
 
     public Mascota( int pfoto, int plikes, String pnombre, boolean pGusta){
         this.nombre = pnombre;
         this.foto = pfoto;
         this.likes = plikes;
         this.gusta = pGusta;
+    }
+
+    public Mascota( int pfoto, int plikes, String pnombre, boolean pGusta, String pFotoId, String pUsuario){
+        this.nombre = pnombre;
+        this.foto = pfoto;
+        this.likes = plikes;
+        this.gusta = pGusta;
+        this.fotoId = pFotoId;
+        this.usuario = pUsuario;
     }
 
     public Mascota (int pfoto, int plikes){
@@ -81,5 +93,21 @@ public class Mascota implements  java.io.Serializable{
 
     public void setUrlFoto(String urlFoto) {
         this.urlFoto = urlFoto;
+    }
+
+    public String getFotoId() {
+        return fotoId;
+    }
+
+    public void setFotoId(String fotoId) {
+        this.fotoId = fotoId;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 }

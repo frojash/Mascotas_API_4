@@ -26,6 +26,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/btnLikeInstagram"
+                android:layout_width="@dimen/icono_hueso"
+                android:layout_height="@dimen/icono_hueso"
+                android:background="@drawable/icons8_dog_bone_50"
+                android:layout_gravity="start"/>
 
             <TextView
                 android:id="@+id/tvLikesDetalle"

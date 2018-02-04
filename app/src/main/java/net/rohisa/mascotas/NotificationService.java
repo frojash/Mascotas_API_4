@@ -30,6 +30,7 @@ public class NotificationService extends FirebaseMessagingService {
         Log.d(TAG, "From: " + remoteMessage.getFrom());
         Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
         Intent i = new Intent(this, MainActivity.class);
+        i.putExtra("Tab",1);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, i, PendingIntent.FLAG_ONE_SHOT);
         Uri sonido = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 

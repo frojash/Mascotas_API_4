@@ -11,6 +11,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.internal.JsonReaderInternalAccess;
 import com.google.gson.stream.JsonWriter;
 
+import net.rohisa.mascotas.adapter.MascotaAdaptador;
 import net.rohisa.mascotas.pojo.Mascota;
 import net.rohisa.mascotas.restApi.JsonKeys;
 import net.rohisa.mascotas.restApi.model.MascotaResponse;
@@ -43,8 +44,12 @@ public class MascotaDeserializador implements JsonDeserializer<MascotaResponse> 
         for (int i = 0; i < mascotaResponseData.size(); i++) {
             JsonObject mascotaResponseDataObject = mascotaResponseData.get(i).getAsJsonObject();
 
+            String fotoId = mascotaResponseDataObject.get(JsonKeys.ID).getAsString();
+
             JsonObject userJson = mascotaResponseDataObject.getAsJsonObject(JsonKeys.USER);
             String id = userJson.get(JsonKeys.USER_ID).getAsString();
+            String userInstagram = userJson.get(JsonKeys.USER_INSTAGRAM).getAsString();
+
             String nombreCompleto = userJson.get(JsonKeys.USER_FULLNAME).getAsString();
 
             JsonObject imageJson = mascotaResponseDataObject.getAsJsonObject(JsonKeys.MEDIA_IMAGES);
@@ -59,7 +64,8 @@ public class MascotaDeserializador implements JsonDeserializer<MascotaResponse> 
             mascotaActual.setNombre(nombreCompleto);
             mascotaActual.setUrlFoto(urlFoto);
             mascotaActual.setLikes(likes);
-
+            mascotaActual.setFotoId(fotoId);
+            mascotaActual.setUsuario(userInstagram);
             mascotas.add(mascotaActual);
         }
 
