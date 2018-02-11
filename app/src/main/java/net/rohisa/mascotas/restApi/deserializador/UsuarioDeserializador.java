@@ -28,6 +28,8 @@ public class UsuarioDeserializador implements JsonDeserializer<UsuarioResponse> 
     @Override
     public UsuarioResponse deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         Gson gson = new Gson();
+        Log.d("fercho", "4");
+
         UsuarioResponse usuarioResponse = gson.fromJson(json, UsuarioResponse.class);
         JsonArray usuarioResponseData = json.getAsJsonObject().getAsJsonArray(JsonKeys.MEDIA_RESPONSE_ARRAY);
 
@@ -47,7 +49,9 @@ public class UsuarioDeserializador implements JsonDeserializer<UsuarioResponse> 
             usuarioResponse.setUsuario(userInstagram);
             usuarioResponse.setId(id);
         }
-        return usuarioResponse;
 
+        Log.d("fercho", "3");
+
+        return usuarioResponse;
     }
 }

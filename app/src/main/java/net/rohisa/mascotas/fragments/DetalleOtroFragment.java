@@ -1,17 +1,13 @@
 package net.rohisa.mascotas.fragments;
 
-import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.annotation.DimenRes;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -19,22 +15,16 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 
 import net.rohisa.mascotas.R;
 import net.rohisa.mascotas.adapter.DetalleAdaptador;
-import net.rohisa.mascotas.adapter.MascotaAdaptador;
 import net.rohisa.mascotas.pojo.Mascota;
-import net.rohisa.mascotas.presentador.DetalleMascotaFragmentPresenter;
+import net.rohisa.mascotas.presentador.DetalleOtroFragmentPresenter;
 import net.rohisa.mascotas.presentador.IDetalleMascotaFragmentPresenter;
-import net.rohisa.mascotas.presentador.IRecyclerViewFragmentPresenter;
-import net.rohisa.mascotas.presentador.RecyclerViewFragmentPresenter;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DetalleMascotaFragment extends Fragment implements IDetalleMascotaFragment {
+public class DetalleOtroFragment extends Fragment implements IDetalleMascotaFragment {
     RecyclerView rvFotosMascota;
     ArrayList<Mascota> mascotas = new ArrayList<Mascota>();
     private IDetalleMascotaFragmentPresenter presenter;
@@ -44,29 +34,20 @@ public class DetalleMascotaFragment extends Fragment implements IDetalleMascotaF
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_detalle_mascota, container, false);
+        Log.d("VALORLISTA",  "1");
 
-        CircularImageView circularImageView = (CircularImageView) v.findViewById(R.id.miImagenCircular);
-        circularImageView.setBorderColor(getResources().getColor(R.color.colorAccent));
-        circularImageView.setBorderWidth(10);
-        circularImageView.addShadow();
-        circularImageView.setShadowRadius(15);
-        circularImageView.setShadowColor(Color.RED);
+        View v = inflater.inflate(R.layout.fragment_detalle_otro, container, false);
 
-        rvFotosMascota = (RecyclerView) v.findViewById(R.id.rvFotosMascota);
+        rvFotosMascota = (RecyclerView) v.findViewById(R.id.rvFotosMascota2);
         generarGridLayout();
         ItemOffsetDecoration itemDecoration = new ItemOffsetDecoration(v.getContext(), R.dimen.espacio_cardview);
         rvFotosMascota.addItemDecoration(itemDecoration);
 
-        presenter = new DetalleMascotaFragmentPresenter(this, getContext());
+        presenter = new DetalleOtroFragmentPresenter(this, getContext());
 
         return v;
 
     }
-
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        return true;
-//    }
 
     @Override
     public void generarGridLayout() {
@@ -77,12 +58,6 @@ public class DetalleMascotaFragment extends Fragment implements IDetalleMascotaF
 
     @Override
     public DetalleAdaptador crearAdaptador(ArrayList<Mascota> mascotas) {
-//        //Ordena la lista
-//        Collections.sort(mascotas, new Comparator<Mascota>() {
-//            public int compare(Mascota o1, Mascota o2) {
-//                return o1.getNombre().compareTo(o2.getNombre());
-//            }
-//        });
 
         DetalleAdaptador adaptador = new DetalleAdaptador(mascotas, getActivity());
         return adaptador;

@@ -56,4 +56,10 @@ public interface EndpointsApi {
     @POST(ConstantesRestApi.KEY_POST_ID_LIKE)
     Call<UsuarioResponse> registrarLikeID(@Field("token") String token, @Field("usuario") String usuario,  @Field("foto") String foto);
 
+    //Registra un token y su usuario de instagram
+    @FormUrlEncoded
+    @POST(ConstantesRestApi.KEY_FOLLOW)
+    Call<Gson> seguirUsuario(@Field("usuario")  String usuario,  @Field("action")  String action);
+
+
 }

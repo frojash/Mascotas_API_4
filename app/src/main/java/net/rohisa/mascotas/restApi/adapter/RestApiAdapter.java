@@ -1,5 +1,10 @@
 package net.rohisa.mascotas.restApi.adapter;
 
+import android.app.IntentService;
+import android.content.Intent;
+import android.support.annotation.Nullable;
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -10,6 +15,9 @@ import net.rohisa.mascotas.restApi.deserializador.UsuarioDeserializador;
 import net.rohisa.mascotas.restApi.model.MascotaResponse;
 import net.rohisa.mascotas.restApi.model.UsuarioResponse;
 
+import java.io.IOException;
+
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -17,7 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by frojash on 1/16/18.
  */
 
-public class RestApiAdapter {
+public class RestApiAdapter{
 
     //https://api.instagram.com/v1/users/self/media/recent/?access_token=ACCESS-TOKEN
     //https://api.instagram.com/v1/users/{user-id}/media/recent/?access_token=ACCESS-TOKEN
@@ -56,4 +64,6 @@ public class RestApiAdapter {
         return gsonBuilder.create();
 
     }
+
+
 }

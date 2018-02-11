@@ -77,7 +77,7 @@ public class DetalleAdaptador extends RecyclerView.Adapter<DetalleAdaptador.Deta
                 _cantidad = mascota.getLikes() + 1;
                 mascota.setLikes(_cantidad);
                 Toast.makeText(activity, "Te gusta la foto " + mascota.getFotoId().toString(), Toast.LENGTH_SHORT).show();
-                enviarLikeInstagram(mascota.getFotoId().toString());
+                //enviarLikeInstagram(mascota.getFotoId().toString());
                 enviarLikeRegistro(token, mascota.getFotoId().toString());
             }
         });
@@ -114,22 +114,6 @@ public class DetalleAdaptador extends RecyclerView.Adapter<DetalleAdaptador.Deta
                 fotoId + ConstantesRestApi.KEY_LIKES;
         retrofit2.Call<Gson> UsuarioResponseCall = endpointsApi.setLikeMedia(url, ConstantesRestApi.ACCESS_TOKEN);
 
-        UsuarioResponseCall.enqueue(new Callback<Gson>() {
-            @Override
-            public void onResponse(retrofit2.Call<Gson> call, Response<Gson> response) {
-                Log.d("Aqui vamos", "1");
-                if (response.isSuccessful()) {
-                    Log.d("Siiiiiiiiiii", response.body().toString());
-                }
-                Log.d("Aqui vamos", "2");
-            }
-
-            @Override
-            public void onFailure(Call<Gson> call, Throwable t) {
-                Log.d("ERRORRRRR", t.toString());
-
-            }
-        });
 
     }
 
